@@ -109,7 +109,7 @@ resource "aws_instance" "linux1" {
   ami = data.aws_ami.aws-linux.id
   instance_type = var.instance_type
   subnet_id = aws_subnet.subnet1.id
-  vpc_security_group_ids = var.splunk_security_group
+  vpc_security_group_ids = aws_security_group.test_security_group.id
   key_name = var.ssh_key_name
   tags = {
     Name = var.instance_name
