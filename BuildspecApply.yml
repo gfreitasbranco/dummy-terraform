@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/0.14.4/terraform_0.14.4_linux_amd64.zip
+      - unzip terraform.zip
+      - rm -f terraform.zip
+      - chmod +x terraform
+      - mv terraform /usr/local/bin/terraform
+  build:
+    commands:
+      - terraform version
+      - terraform init
+      - terraform apply -auto-approve
+  post_build:
+    commands:
+      - terraform destroy
