@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - yum install -y nc
+      
+  build:
+    commands:
+      - dest_ip=`terraform output -raw linux_ip`
+      - nc -z $dest_ip 22
