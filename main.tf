@@ -33,9 +33,9 @@ data "aws_ami" "aws-linux" {
 # INSTANCES
 resource "aws_instance" "linux1" {
   ami = data.aws_ami.aws-linux.id
-  instance_type = t2.micro
-  subnet_id = subnet-0bc6c4486b6c98753
-  vpc_security_group_ids = sg-0b5bbaa2b04604e27
+  instance_type = "t2.micro"
+  subnet_id = "subnet-0bc6c4486b6c98753"
+  vpc_security_group_ids = ["sg-0b5bbaa2b04604e27"]
   tags = {
     Name = "Test Linux Gabriel"
   }
