@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - curl -o terraform.zip https://releases.hashicorp.com/terraform/0.14.4/terraform_0.14.4_linux_amd64.zip
+      - yum install -y nc
       - unzip terraform.zip
       - rm -f terraform.zip
       - chmod +x terraform
@@ -14,5 +15,5 @@ phases:
       - terraform init
       - terraform apply -auto-approve
       - sleep 45
-      - rake
-      - TEST_IP_ADDRESS=`terraform output -raw linux_ip` TEST_PORT=22 rake --trace test
+      - dest_ip=`terraform output -raw linux_ip`
+      - nc -z $dest_ip 22
