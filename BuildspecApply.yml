@@ -18,3 +18,4 @@ phases:
       - dest_ip=`terraform output -raw linux_ip`
       - ping -c 5 $dest_ip
       - nc -z $dest_ip 22
+      - curl ifconfig.me
