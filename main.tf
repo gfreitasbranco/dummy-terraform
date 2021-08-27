@@ -33,7 +33,7 @@ data "aws_ami" "aws-linux" {
 # INSTANCES
 resource "aws_instance" "linux1" {
   ami = data.aws_ami.aws-linux.id
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
   subnet_id = "subnet-05d45871f5cafe2fd"
   vpc_security_group_ids = ["sg-09153c6473cd5f0e4"]
   tags = {
