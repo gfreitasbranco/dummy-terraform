@@ -16,8 +16,4 @@ phases:
       - terraform apply -auto-approve
       - sleep 45
       - dest_ip=`terraform output -raw linux_ip`
-      - if echo $dest_ip; then
-          echo "Connection successful"
-        else
-          echo "Connection failure"
-        fi
+      - nc -z $dest_ip 22
